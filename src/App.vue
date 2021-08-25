@@ -1,5 +1,8 @@
 <template>
-  <h1>Can you guess the accepted answer?</h1>
+  <header>
+    <div class="title">stack<b>overflow</b></div>
+    <div class="question">Can you guess the accepted answer?</div>
+  </header>
   <question-list :QuestionArray="result" />
 </template>
 
@@ -47,12 +50,37 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0 auto;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+header {
+  text-align: left;
+  background-color: var(--black-025);
+  transition: box-shadow cubic-bezier(.165, .84, .44, 1) .25s;
+  height: 50px;
+  box-sizing: border-box;
+  border-top: 3px solid rgb(255, 166, 0);
+  margin: 0px auto;
+  padding: 5px;
+}
+header .title, header .question {
+  display: inline-block;
+}
+header .title {
+  padding: .25em;
+}
+header .question {
+  padding: .25em;
+  font-weight: 500;
+  font-size: 15pt;
+  text-align: center;
+}
+
 </style>

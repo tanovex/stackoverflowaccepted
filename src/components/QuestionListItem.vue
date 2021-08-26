@@ -1,16 +1,15 @@
 
 <template>
   <div class="questionListItem">
-       
-        <h2 v-html="Question.title"></h2>
+        <h2>Q: <span v-html="Question.title"></span></h2>
         <p class="QuestionBody" v-html="Question.body"></p>
         <p>
             <img :src="Question.owner.profile_image" /> 
             <span class="user-name">{{Question.owner.display_name}}</span>
         </p>
-        <ul v-for="answer in Question.answers" :key="answer.answer_id">
+        <div v-for="answer in Question.answers" :key="answer.answer_id">
             <answer-list-item :Answer="answer" />
-        </ul>
+        </div>
   </div>
 </template>
 
@@ -48,7 +47,7 @@ export default {
        
         margin-left: 1em;
         margin-right: 1em;
-        
+
         padding-left: 1em;
         padding-right: 1em;
     }

@@ -7,8 +7,8 @@
             <img :src="Question.owner.profile_image" /> 
             <span class="user-name">{{Question.owner.display_name}}</span>
         </p>
-        <div v-for="answer in Question.answers" :key="answer.answer_id">
-            <answer-list-item :Answer="answer" />
+        <div>
+            <answer-list-item :Answer="answer" v-for="answer in Question.answers" :key="answer.answer_id" />
         </div>
   </div>
 </template>
@@ -20,6 +20,16 @@ export default {
   name: 'QuestionListItem',
   props: {
     Question: {}
+  },
+  
+  methods: {
+    shuffleAnswerArray(arr) {
+        arr.sort(() => Math.random() - 0.5);
+    }
+  },
+  
+  created() {
+      this.shuffleAnswerArray(this.Question.answers);
   }
 }
 </script>

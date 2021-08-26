@@ -13,7 +13,7 @@ export default {
   components: { QuestionListItem },
   name: 'QuestionList',
   props: {
-    QuestionArray: []
+    QuestionArray: [Object]
   }
 }
 </script>

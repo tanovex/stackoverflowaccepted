@@ -1,53 +1,44 @@
 
 <template>
   <div class="questionListItem">
-        <h2>Q: <span v-html="Question.title"></span></h2>
-        <p class="QuestionBody" v-html="Question.body"></p>
-        <p>
-            <img :src="Question.owner.profile_image" /> 
-            <span class="user-name">{{Question.owner.display_name}}</span>
-        </p>
-        <div>
-            <answer-list-item :Answer="answer" v-for="answer in Question.answers" :key="answer.answer_id" />
-        </div>
+        <h2>Q: <span v-html="Question.title"></span> <button @click="$emit('showQDetails', Question)" type="button">View</button></h2>
   </div>
 </template>
 
 <script>
-import AnswerListItem from './AnswerListItem.vue'
 export default {
-  components: { AnswerListItem },
   name: 'QuestionListItem',
   props: {
     Question: {}
   },
-  
-  methods: {
-    shuffleAnswerArray(arr) {
-        arr.sort(() => Math.random() - 0.5);
-    }
-  },
-  
-  created() {
-      this.shuffleAnswerArray(this.Question.answers);
-  }
+  emits: ['showQDetails'],
 }
 </script>
 
 <style lang="css" scoped>
+    .user-info {
+        text-align: left;
+        margin-left: 3em;
+    }
     img {
         width: 2em;
         display:inline-block;
+        vertical-align: middle;
     }
+    
+    .user-name {
+        padding: .5em;
+        display: inline-block;
+    }
+
     h2 {
-        font-size: 2.07692308rem;
+        font-size: 1.07692308rem;
         line-height: 1.35;
         font-weight: normal;
         margin-left: .75em;
         margin-right: .75em;
         margin-bottom: 0;
         text-align: left;
-        border-bottom: 1px solid #bbb;
     }
     .questionListItem{
         padding: .25em;

@@ -1,10 +1,13 @@
 
 <template>
   <div class="answerListItem">
-        <p class="AnswerBody">Answer: <span v-html="Answer.body"></span></p>
+        <p class="AnswerBody"><span v-html="Answer.body"></span></p>
         <p>
             <img :src="Answer.owner.profile_image" /> 
-            <span class="user-name">{{Answer.owner.display_name}}</span>
+            <span class="user-name" v-html="Answer.owner.display_name"></span>
+        </p>
+        <p v-if="showChoice">
+            <button type="button" @click="$emit('isAcceptedAnswer', Answer)">I choose this one</button>
         </p>
   </div>
 </template>
@@ -13,15 +16,22 @@
 export default {
   name: 'AnswerListItem',
   props: {
-    Answer: {}
-  }
+    Answer: {},
+    showChoice: Boolean
+  },
+  emits: ["isAcceptedAnswer"]
 }
 </script>
 
 <style lang="css" scoped>
     img {
-        width: 1em;
+        width: 1.5em;
         display:inline-block;
+        vertical-align: middle;
+    }
+    .user-name {
+        padding: .5em;
+        display: inline-block;
     }
     h2 {
         font-size: 2.07692308rem;

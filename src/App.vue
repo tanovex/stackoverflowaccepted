@@ -3,7 +3,10 @@
     <div class="title">stack<b>overflow</b></div>
     <div class="question">Can you guess the accepted answer?</div>
   </header>
-  <question-list :QuestionArray="result" />
+  <question-list :QuestionArray="result" v-if="result.length>0" />
+  <div class="loading" v-else>
+    <h1>Loading Questions...</h1>
+  </div>
 </template>
 
 <script>
